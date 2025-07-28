@@ -1,20 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Send() {
   const [word, setWord] = useState("");
-  const [socket, setSocket] = useState(null);
-
-  useEffect(() => {
-    const ws = new WebSocket("wss://backendrealtimesystem.onrender.com");
-    setSocket(ws);
-
-    return () => {
-      ws.close();
-    };
-  }, []);
+  const socket = new WebSocket("wss://backendrealtimesystem.onrender.com"); 
 
   const sendWord = () => {
-    if (word.trim() && socket?.readyState === WebSocket.OPEN) {
+    if (word.trim()) {
       socket.send(word);
       setWord("");
     }
@@ -38,9 +29,9 @@ function Send() {
       </div>
     </div>
   );
-}
-
-const styles = {
+  }
+  
+  const styles = {
   container: {
     minHeight: "100vh",
     width: "100vw",
@@ -89,6 +80,7 @@ const styles = {
     fontWeight: "700",
     transition: "background-color 0.3s ease",
   },
-};
+  };
 
 export default Send;
+
