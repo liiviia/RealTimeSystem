@@ -4,7 +4,7 @@ function DisplayPage() {
   const [latestWord, setLatestWord] = useState("In attesa...");
 
   useEffect(() => {
-    const socket = new WebSocket("wss://110241b214e8.ngrok-free.app");
+    const socket = new WebSocket("wss://dfd16f7eecae.ngrok-free.app");
     
     socket.onmessage = (event) => {
       setLatestWord(event.data);
