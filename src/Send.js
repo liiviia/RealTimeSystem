@@ -21,7 +21,7 @@ function Send() {
   };
 
   return (
-    <div style={styles.wrapper}>
+    <div style={styles.container}>
       <div style={styles.box}>
         <h1 style={styles.title}>Inserisci una parola o frase</h1>
         <input
@@ -30,6 +30,7 @@ function Send() {
           onChange={(e) => setWord(e.target.value)}
           placeholder="Scrivi qui..."
           style={styles.input}
+          onKeyDown={(e) => e.key === "Enter" && sendWord()}
         />
         <button onClick={sendWord} style={styles.button}>
           Invia
@@ -40,10 +41,10 @@ function Send() {
 }
 
 const styles = {
-  wrapper: {
-    height: "100vh",
+  container: {
+    minHeight: "100vh",
     width: "100vw",
-    backgroundColor: "#f0f4f8",
+    backgroundColor: "#f7fafc",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -51,41 +52,42 @@ const styles = {
     boxSizing: "border-box",
   },
   box: {
-    backgroundColor: "#fff8f0",
-    borderRadius: "25px",
+    backgroundColor: "#ffe4e1",
+    borderRadius: 20,
     padding: "2rem 1.5rem",
-    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
-    width: "100%",
-    maxWidth: "500px",
-    minHeight: "60vh",
+    width: "95%",
+    maxWidth: 400,
+    boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    gap: "1.5rem",
   },
   title: {
-    fontSize: "1.5rem",
-    color: "#333",
-    marginBottom: "2rem",
+    fontSize: "1.6rem",
+    fontWeight: "600",
     textAlign: "center",
+    color: "#4a4a4a",
+    margin: 0,
   },
   input: {
-    fontSize: "1.2rem",
-    padding: "0.8rem",
-    borderRadius: "10px",
-    border: "1px solid #ccc",
-    marginBottom: "1.5rem",
+    fontSize: "1.3rem",
+    padding: "0.75rem 1rem",
+    borderRadius: 15,
+    border: "1.5px solid #ff7f7f",
+    outline: "none",
     width: "100%",
     boxSizing: "border-box",
   },
   button: {
-    backgroundColor: "#ffa69e",
-    color: "#fff",
+    fontSize: "1.4rem",
+    backgroundColor: "#ff7f7f",
+    color: "white",
     border: "none",
-    padding: "0.9rem",
-    fontSize: "1.1rem",
-    borderRadius: "10px",
+    borderRadius: 15,
+    padding: "0.9rem 0",
     cursor: "pointer",
-    transition: "background 0.3s ease",
+    fontWeight: "700",
+    transition: "background-color 0.3s ease",
   },
 };
 
