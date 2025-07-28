@@ -27,7 +27,7 @@ function App() {
 
 export default App;*/
 
-import { useEffect, useState } from "react";
+/*import { useEffect, useState } from "react";
 
 function App() {
   const [socket, setSocket] = useState(null);
@@ -84,5 +84,11 @@ function App() {
   );
 }
 
-export default App;
+export default App;*/
 
+function App() {
+return (
+<h1>Ciao, funziona!</h1>
+); 
+}
+export default App;
