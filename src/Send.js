@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Send() {
   const [word, setWord] = useState("");
-  const socket = new WebSocket("wss://https://backendrealtimesystem.onrender.com"); 
+  const socket = new WebSocket("wss://backendrealtimesystem.onrender.com"); 
 
   const sendWord = () => {
     if (word.trim()) {
