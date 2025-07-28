@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Send from './Send';
+import DisplayPage from './DisplayPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Send />
+    <DisplayPage />
   </React.StrictMode>
 );
 
