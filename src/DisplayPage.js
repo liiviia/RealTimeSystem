@@ -20,9 +20,31 @@ function DisplayPage() {
       <div style={styles.listBox}>
         <h2 style={styles.title}>Parole ricevute:</h2>
         <ul style={styles.list}>
-          {parole.map((word, index) => (
-            <li key={index} style={styles.item}>
-              {word}
+          {parole.map((wordObj, index) => (
+            <li
+              key={index}
+              style={{
+                ...styles.item,
+                color: wordObj.offensive ? "#c53030" : "#1a202c",
+                textDecoration: wordObj.offensive ? "underline" : "none",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+            >
+              {wordObj.text}
+              {wordObj.offensive && (
+                <span style={{
+                  backgroundColor: "#e53e3e",
+                  color: "white",
+                  padding: "0.2rem 0.5rem",
+                  borderRadius: "1rem",
+                  fontSize: "0.7rem",
+                  fontWeight: "bold"
+                }}>
+                  vietata
+                </span>
+              )}
             </li>
           ))}
         </ul>
