@@ -4,15 +4,16 @@ function DisplayPage() {
   const [parole, setParole] = useState([]);
 
   useEffect(() => {
-    const socket = new WebSocket("wss://backendrealtimesystem.onrender.com");
-
-    socket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      setParole(data);
-    };
-
-    return () => socket.close();
+    fetch("https://backendrealtimesystem.onrender.com/download")
+      .finally(() => {
+        const socket = new WebSocket("wss://backendrealtimesystem.onrender.com");
+        socket.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+          setParole(data);
+        };
+      });
   }, []);
+  
 
   return (
     <div style={styles.container}>
