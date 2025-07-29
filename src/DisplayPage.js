@@ -19,6 +19,23 @@ function DisplayPage() {
 
     return () => socket.close();
   }, []);
+  
+
+  const handleClear = async () => {
+    try {
+      const res = await fetch("https://backendrealtimesystem.onrender.com/clear", {
+        method: "POST",
+      });
+  
+      if (res.ok) {
+        setParole([]); // svuota frontend
+      } else {
+        console.error("Errore pulizia backend");
+      }
+    } catch (err) {
+      console.error("Errore rete:", err);
+    }
+  };
 
   return (
     <div style={styles.container}>
@@ -66,7 +83,12 @@ function DisplayPage() {
         >
           <button style={styles.button}>Scarica parole.txt</button>
         </a>
+        <br /><br />
+        <button style={styles.clearButton} onClick={handleClear}>
+           Pulisci tutto
+        </button>
       </div>
+
     </div>
   );
 }
@@ -122,6 +144,18 @@ const styles = {
     borderRadius: 10,
     cursor: "pointer",
   },
+
+  clearButton: {
+    backgroundColor: "#e53935",
+    color: "white",
+    fontSize: "1.1rem",
+    padding: "0.7rem 1.2rem",
+    border: "none",
+    borderRadius: 10,
+    cursor: "pointer",
+    marginTop: "1rem",
+  }
+  
 };
 
 
