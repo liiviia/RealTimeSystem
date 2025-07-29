@@ -4,16 +4,21 @@ function DisplayPage() {
   const [parole, setParole] = useState([]);
 
   useEffect(() => {
-    fetch("https://backendrealtimesystem.onrender.com/download")
-      .finally(() => {
-        const socket = new WebSocket("wss://backendrealtimesystem.onrender.com");
-        socket.onmessage = (event) => {
-          const data = JSON.parse(event.data);
+    const socket = new WebSocket("wss://backendrealtimesystem.onrender.com");
+
+    socket.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (Array.isArray(data)) {
           setParole(data);
-        };
-      });
+        }
+      } catch (error) {
+        console.error("Errore parsing WebSocket data:", error);
+      }
+    };
+
+    return () => socket.close();
   }, []);
-  
 
   return (
     <div style={styles.container}>
@@ -34,14 +39,16 @@ function DisplayPage() {
             >
               {wordObj.text}
               {wordObj.offensive && (
-                <span style={{
-                  backgroundColor: "#e53e3e",
-                  color: "white",
-                  padding: "0.2rem 0.5rem",
-                  borderRadius: "1rem",
-                  fontSize: "0.7rem",
-                  fontWeight: "bold"
-                }}>
+                <span
+                  style={{
+                    backgroundColor: "#e53e3e",
+                    color: "white",
+                    padding: "0.2rem 0.5rem",
+                    borderRadius: "1rem",
+                    fontSize: "0.7rem",
+                    fontWeight: "bold",
+                  }}
+                >
                   vietata
                 </span>
               )}
@@ -49,9 +56,14 @@ function DisplayPage() {
           ))}
         </ul>
       </div>
+
       <div style={styles.downloadBox}>
         <h2 style={styles.title}>File scaricabile</h2>
-        <a href="https://backendrealtimesystem.onrender.com/download" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://backendrealtimesystem.onrender.com/download"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <button style={styles.button}>Scarica parole.txt</button>
         </a>
       </div>
@@ -59,37 +71,33 @@ function DisplayPage() {
   );
 }
 
+
 const styles = {
   container: {
     display: "flex",
     flexDirection: "row",
-    height: "100vh",
-    padding: "2rem",
-    boxSizing: "border-box",
-    backgroundColor: "#fefefe",
-    justifyContent: "space-around",
-    alignItems: "flex-start",
     flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    padding: "2rem",
+    backgroundColor: "#fefefe",
+    gap: "2rem",
   },
   listBox: {
-    flex: 1,
-    minWidth: 300,
-    maxWidth: 500,
+    flex: "1 1 300px",
     backgroundColor: "#fce4ec",
     padding: "1.5rem",
     borderRadius: 15,
     boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-    marginBottom: "1rem",
+    maxWidth: "600px",
   },
   downloadBox: {
-    flex: 1,
-    minWidth: 250,
-    maxWidth: 400,
+    flex: "1 1 250px",
     backgroundColor: "#e3f2fd",
     padding: "1.5rem",
     borderRadius: 15,
     boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-    marginBottom: "1rem",
+    maxWidth: "400px",
     textAlign: "center",
   },
   title: {
@@ -115,5 +123,6 @@ const styles = {
     cursor: "pointer",
   },
 };
+
 
 export default DisplayPage;
