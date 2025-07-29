@@ -1,78 +1,70 @@
-/* Send.css */
-
-* {
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, sans-serif;
-    background-color: #f2f2f2;
-    height: 100%;
-  }
-  
-  .container {
+.container {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #f7fafc;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    height: 100vh;
-    width: 100vw;
+    box-sizing: border-box;
   }
   
   .box {
-    background-color: #fff0f0;
+    background-color: #ffe4e1;
     border-radius: 20px;
-    padding: 2rem;
-    width: 100%;
-    max-width: 50%;
-    max-height: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
+    padding: 2rem 1.5rem;
+    width: 95%;
+    max-width: 400px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
   }
   
   .title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    font-weight: 600;
     text-align: center;
-    color: #333;
-  }
-  
-  label {
-    font-size: 1rem;
-    color: #444;
+    color: #4a4a4a;
+    margin: 0;
   }
   
   .input {
-    font-size: 1.2rem;
-    padding: 1rem;
-    border-radius: 12px;
-    border: 2px solid #ff9999;
+    font-size: 1.3rem;
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    border: 1.5px solid #ff7f7f;
     outline: none;
     width: 100%;
-  }
-  
-  .input:focus {
-    border-color: #ff6666;
-    background-color: #fff;
+    box-sizing: border-box;
   }
   
   .button {
-    font-size: 1.2rem;
-    background-color: #ff6666;
+    font-size: 1.4rem;
+    background-color: #ff7f7f;
     color: white;
-    padding: 1rem;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
+    padding: 0.9rem 0;
     cursor: pointer;
-    font-weight: bold;
-    width: 100%;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
   }
-  
-  .button:active {
-    background-color: #e65050;
-  }
-  
+    
+    @media screen and (max-width: 768px) {
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .box {
+            flex-direction: column;
+            gap: 15px;
+            min-width: 50%;
+            min-height: auto;
+            padding: 10px;
+        }
+    }
