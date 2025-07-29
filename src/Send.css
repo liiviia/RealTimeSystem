@@ -2,85 +2,76 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif;
   }
   
   html, body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+    background-color: #f2f2f2;
     height: 100%;
-    width: 100%;
-    background-color: #f7fafc;
   }
   
   .container {
-    min-height: 100vh;
-    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem;
+    padding: 1rem;
+    height: 100vh;
+    width: 100vw;
   }
   
   .box {
-    background-color: #ffe4e1;
+    background-color: #fff0f0;
     border-radius: 20px;
-    padding: 2rem 1.2rem;
+    padding: 2rem;
     width: 100%;
-    height: 90vh; /* occupa quasi tutto lo schermo */
-    max-width: 500px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 420px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
   
   .title {
-    font-size: 1.9rem;
-    font-weight: 600;
+    font-size: 1.8rem;
     text-align: center;
-    color: #4a4a4a;
+    color: #333;
+  }
+  
+  label {
+    font-size: 1rem;
+    color: #444;
   }
   
   .input {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     padding: 1rem;
-    border-radius: 15px;
-    border: 2px solid #ff7f7f;
+    border-radius: 12px;
+    border: 2px solid #ff9999;
     outline: none;
     width: 100%;
   }
   
+  .input:focus {
+    border-color: #ff6666;
+    background-color: #fff;
+  }
+  
   .button {
-    font-size: 1.5rem;
-    background-color: #ff7f7f;
+    font-size: 1.2rem;
+    background-color: #ff6666;
     color: white;
+    padding: 1rem;
     border: none;
-    border-radius: 15px;
-    padding: 1rem 0;
+    border-radius: 12px;
     cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    width: 100%;
   }
   
-  .button:hover {
-    background-color: #ff4f4f;
-  }
-  
-  /* Su schermi più grandi (tablet/desktop), ottimizziamo spazi */
-  @media screen and (min-width: 768px) {
-    .box {
-      height: auto;
-      padding: 3rem 2.5rem;
-    }
-  
-    .title {
-      font-size: 2.2rem;
-    }
-  
-    .input, .button {
-      font-size: 1.5rem;
-    }
+  .button:active {
+    background-color: #e65050;
   }
   

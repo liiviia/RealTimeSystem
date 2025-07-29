@@ -15,12 +15,14 @@ function Send() {
   return (
     <div className="container">
       <div className="box">
-        <h1 className="title">Inserisci una parola o frase</h1>
+        <h1 className="title">Invia una parola o frase</h1>
+        <label htmlFor="wordInput">Scrivi qui sotto:</label>
         <input
+          id="wordInput"
           type="text"
           value={word}
           onChange={(e) => setWord(e.target.value)}
-          placeholder="Scrivi qui..."
+          placeholder="Es: ciao mondo"
           className="input"
           onKeyDown={(e) => e.key === "Enter" && sendWord()}
         />
